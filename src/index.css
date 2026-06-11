@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Inter:ital,wght@0,100..900;1,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --color-bg-dark-val: #fbf9f6; /* Beautiful warm-tinted elegant cream/beige */
+  --color-text-val: #2b2927; /* Rich, elegant, formal warm charcoal */
+  --color-surface-glass-val: rgba(255, 255, 255, 0.75);
+  --color-border-glass-val: rgba(28, 26, 24, 0.07);
+  
+  --color-doodle-canvas: #fdfcf9;
+  --color-doodle-bg: #fffdfb;
+  --color-doodle-stroke: #2b2927;
+  --color-doodle-accent: #a87f65;
+  --color-doodle-grid: rgba(168, 127, 101, 0.08);
+  
+  --color-scrollbar-track-val: #fbf9f6;
+  --color-scrollbar-thumb-val: rgba(150, 178, 209, 0.3);
+}
+
+.dark {
+  --color-bg-dark-val: #0c0b0a; /* Premium dark obsidian black */
+  --color-text-val: #f4f1eb; /* Elegant warm off-white */
+  --color-surface-glass-val: rgba(28, 26, 24, 0.75);
+  --color-border-glass-val: rgba(244, 241, 235, 0.08);
+  
+  --color-doodle-canvas: #161514; /* Dark sketchbook background */
+  --color-doodle-bg: #22201f; /* Dark components inside doodle */
+  --color-doodle-stroke: #f4f1eb; /* Off-white strokes */
+  --color-doodle-accent: #e2bca8; /* Blush peach accent in dark mode */
+  --color-doodle-grid: rgba(226, 188, 168, 0.08);
+  
+  --color-scrollbar-track-val: #0c0b0a;
+  --color-scrollbar-thumb-val: rgba(150, 178, 209, 0.45);
+}
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Cormorant Garamond", serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  
+  --color-bg-dark: var(--color-bg-dark-val);
+  --color-accent-cyan: #96b2d1; /* Refined soft pastel powder blue */
+  --color-accent-gold: #e2bca8; /* Exquisite soft pastel warm blush peach */
+  --color-surface-glass: var(--color-surface-glass-val);
+  --color-border-glass: var(--color-border-glass-val);
+}
+
+@layer base {
+  html, body {
+    background-color: var(--color-bg-dark);
+    color: var(--color-text-val);
+    font-family: var(--font-sans);
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    letter-spacing: -0.01em;
+    transition: background-color 0.4s ease, color 0.4s ease;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    font-weight: 500;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: var(--color-scrollbar-track-val);
+    transition: background 0.4s ease;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-scrollbar-thumb-val);
+    border-radius: 4px;
+    transition: background 0.3s ease;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(150, 178, 209, 0.5);
+  }
+}
+
+/* Glassmorphism utility */
+.glass-panel {
+  background: var(--color-surface-glass-val);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--color-border-glass-val);
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.glass-panel-hover {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-panel-hover:hover {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(150, 178, 209, 0.35);
+  box-shadow: 0 10px 40px -10px rgba(150, 178, 209, 0.08);
+}
+
+.dark .glass-panel-hover:hover {
+  background: rgba(35, 33, 32, 0.9);
+  border-color: rgba(150, 178, 209, 0.45);
+  box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.35);
+}
+
+/* Marquee ribbon animations */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 30s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+@keyframes float-drift {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(1deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+.animate-float-drift {
+  animation: float-drift 8s ease-in-out infinite;
+}
+
+/* Radial Gradient Blurs for soft formal vibe */
+.ambient-glow-cyan {
+  background: radial-gradient(circle, rgba(150, 178, 209, 0.08) 0%, rgba(255, 255, 255, 0) 70%);
+}
+
+.ambient-glow-gold {
+  background: radial-gradient(circle, rgba(226, 188, 168, 0.08) 0%, rgba(255, 255, 255, 0) 70%);
+}

@@ -1,0 +1,15 @@
+{
+  "projects": {
+    "default": "portfolio-47c12"
+  },
+  "targets": {
+    "portfolio-47c12": {
+      "hosting": {
+        "manimaran": [
+          "manimaran"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}

@@ -1,0 +1,6 @@
+{
+  "name": "Manimaran K Portfolio",
+  "description": "An immersive, cinematic 3D creative developer portfolio for Manimaran K, showcasing full-stack AI development, custom shaders, and interactive 3D physics.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
